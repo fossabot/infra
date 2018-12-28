@@ -1,0 +1,16 @@
+push_to_github:
+    image: alpine:3.8
+    script:
+    - apk add --no-cache git openssh
+    - mkdir .ssh && echo $id_rsa | base64 -d > .ssh/id_rsa
+    - eval $(ssh-agent -s) && chmod 700 .ssh/id_rsa && ssh-add .ssh/id_rsa
+    - mkdir ~/.ssh && ssh-keyscan github.com > ~/.ssh/known_hosts
+    - rm nodes/*.json
+    - rm -rf data_bags/config
+    - rm -rf .git
+    - git init
+    - git config --global user.email "root@devlover.id"
+    - git config --global user.name "bejo"
+    - git add --all && git commit -m "export"
+    - git remote add github git@github.com:devlover-id/infra.git
+    - git push github master --force

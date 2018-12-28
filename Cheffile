@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'https://supermarket.getchef.com/api/v1'
+
+cookbook 'nginx', '~> 9.0.0'
+cookbook 'sysctl', '~> 1.0.5'
+cookbook 'limits', '~> 1.0.0'
+cookbook 'nodejs', '~> 6.0.0'
+cookbook 'sudo', '~> 5.4.4'
+cookbook 'acme', '~> 4.0.0'
+cookbook 'postgresql', '~> 7.1.1'
+cookbook 'line', '~> 2.1.1'

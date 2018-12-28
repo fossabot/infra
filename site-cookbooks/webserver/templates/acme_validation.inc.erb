@@ -1,0 +1,4 @@
+location ^~ /.well-known/acme-challenge/ {
+    root <%= node['nginx']['acme_challenge']['dir'] %>;
+    default_type text/plain;
+}
